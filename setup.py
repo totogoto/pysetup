@@ -15,7 +15,8 @@ VS_CODE_EXTENSIONS = [
     "ms-python.vscode-pylance",
     "ms-toolsai.jupyter",
     "ms-toolsai.jupyter-keymap",
-    "ms-toolsai.jupyter-renderers"
+    "ms-toolsai.jupyter-renderers",
+    "ms-vsliveshare.vsliveshare"
 ]
 
 
@@ -35,6 +36,22 @@ dependencies:
       - requests
 '''
 
+ENV_YAML_CONTENT_WINDOWS='''name: totogoto
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.9.5
+  - git
+  - pip
+  - ipython=7.29.0
+  - ipykernel=6.4.2
+  - pywin32=228
+  - pip:
+      - ipykernel=6.4.2
+      - ottopy
+      - requests
+'''
 
 def is_bin_exist(name):
     return which(name) is not None
@@ -51,7 +68,10 @@ def run_command(cmd):
 def create_env_yaml_file():
     if not os.path.isfile(YAML_FILE_NAME):
         with open(YAML_FILE_NAME, "w") as f:
-            f.write(ENV_YAML_CONTENT)
+            if PLATFORM == "windows":
+                f.write(ENV_YAML_CONTENT_WINDOWS)
+            else:
+                f.write(ENV_YAML_CONTENT)
 
 
 def download_file(url, file_name):

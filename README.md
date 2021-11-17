@@ -2,11 +2,11 @@
 
 ## Table of Contents
 + [Getting Started](#getting_started)
-    + [Installing VS Code](#vs-code)
     + [Installing Miniconda](#miniconda)
         + [In Windows](#miniconda-windows)
         + [In Linux](#miniconda-linux)
         + [In Mac](#miniconda-mac)
+    + [Installing VS Code](#vs-code)
     + [Settting Up the environment](#setup)
     + [Downloading & Running Project](#project-setup)
 ## Getting Started <a name="getting_started"></a>
@@ -19,14 +19,6 @@ What things you need to install the software and how to install them.
 - Visual Studio Code
 - Miniconda
 ```
-
----------
-
-### Installing VS Code  <a name = "vs-code"></a>
-
- [Download Visual Studio Code](https://code.visualstudio.com/Download)
-![](./images/s1.png)
-
 ---------
 ### Installing Miniconda <a name = "miniconda"></a>
 
@@ -52,7 +44,7 @@ What things you need to install the software and how to install them.
 
 6. Click Install.
 
-    ![](./images/m_s51.png)
+    ![](./images/m_s52.png)
 
 
 #### In Linux <a name = "miniconda-linux"></a>
@@ -86,6 +78,14 @@ chmod +x Miniconda3-latest-Linux-x86_64.sh
 
 ---------
 
+
+
+### Installing VS Code  <a name = "vs-code"></a>
+
+ [Download Visual Studio Code](https://code.visualstudio.com/Download)
+![](./images/s1.png)
+
+---------
 
 ### Environment Setup <a name = "setup"></a>
 
