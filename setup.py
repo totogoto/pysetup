@@ -48,7 +48,7 @@ dependencies:
   - ipykernel=6.4.2
   - pywin32=228
   - pip:
-      - ipykernel=6.4.2
+      - ipykernel==6.4.2
       - ottopy
       - requests
 '''
