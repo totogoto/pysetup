@@ -64,6 +64,43 @@ def run_command(cmd):
 
     return op
 
+def mergedict(*args):
+    output = {}
+    for arg in args:
+        output.update(arg)
+    return output
+
+def create_vscode_setting():
+    import requests
+    import json
+
+    existing_json = {}
+    default_json = {}
+    os_json = {}
+    base_url = "https://raw.githubusercontent.com/totogoto/pysetup/main/settings"
+
+    resp_default = requests.get(f"{base_url}/default.json")
+    if resp_default.status_code == requests.codes.ok:
+        default_json = json.loads(resp_default.text)
+
+    resp_plateform = requests.get(f"{base_url}/{PLATFORM}.json")
+    if resp_plateform.status_code == requests.codes.ok:
+        os_json = json.loads(resp_plateform.text)
+    
+    if os.path.isdir('.vscode') and os.path.isfile(os.path.join('.vscode','settings.json')) and os.path.getsize(os.path.join('.vscode','settings.json')):
+        setting_json_str = open(os.path.join('.vscode', 'settings.json'),'r').read()
+        existing_json = json.loads(setting_json_str)
+
+    merged_json = mergedict(existing_json, default_json, os_json)
+    print(merged_json)
+
+    if not os.path.isdir('.vscode'):
+        os.makedirs(".vscode", exist_ok=True)
+    setting_file_path = os.path.join('.vscode', 'settings.json')
+
+    with open(setting_file_path, 'w') as f:
+        f.write(json.dumps(merged_json))
+
 
 def create_env_yaml_file():
     if not os.path.isfile(YAML_FILE_NAME):
@@ -138,6 +175,10 @@ def setup_vscode():
                 print(f"Installing vscode extension: {extension}.")
 
                 run_command(f"code --install-extension {extension}")
+
+    #Setup .vscode/settings.json
+    create_vscode_setting()
+
 
 
 def setup_pkgs():
