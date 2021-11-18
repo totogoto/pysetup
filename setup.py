@@ -92,7 +92,7 @@ def create_vscode_setting():
         existing_json = json.loads(setting_json_str)
 
     merged_json = mergedict(existing_json, default_json, os_json)
-    print(merged_json)
+
 
     if not os.path.isdir('.vscode'):
         os.makedirs(".vscode", exist_ok=True)
