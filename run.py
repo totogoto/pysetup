@@ -9,7 +9,7 @@ import hashlib
 import sys
 import glob
 
-EXERSIZE_PROJECT_REPO = 'https://github.com/totogoto/python-exersices.git'
+EXERSIZE_PROJECT_REPO = 'https://github.com/totogoto/python-exercises'
 SOURCE_FOLDER = 'src'
 DEST_FOLDER = 'exercises'
 USERNAME = getpass.getuser()
